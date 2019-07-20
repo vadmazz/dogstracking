@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DogsTracker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace DogsTracker
     /// </summary>
     public partial class MainWindow : Window
     {
+        public DataGridTemplateColumn templateColumn;
         public MainWindow()
-        {
+        {                                           
             InitializeComponent();
+            templateColumn = new DataGridTemplateColumn();
+            templateColumn.CellTemplate = (DataTemplate)FindResource("ColButton");
+            OddsList.Columns.Add(templateColumn);
         }
     }
 }
