@@ -16,7 +16,7 @@ namespace DogsTracker.ViewModels
 
         public MainWindowViewModel()
         {
-            oddsTable = new OddsTable();
+            oddsTable = new OddsTable();            
             oddsTable.PropertyChanged += (s, e) => { OnPropertyChanged(e.PropertyName); };
         }
         public void OnPropertyChanged([CallerMemberName]string prop = "")

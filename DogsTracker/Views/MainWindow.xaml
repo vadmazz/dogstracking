@@ -13,10 +13,29 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Odds}" x:Name="OddsList" />
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="RefreshButton" Content="Refresh" Grid.Row="1"/>
+        <Button x:Name="SettingsButton" Content="Settings" Grid.Row="2"/>
+        <Button x:Name="HelpButton" Style="{DynamicResource ResourceKey= MenuButton}" Content="Help" Grid.Row="3"/>
+        <Button x:Name="DonateButton" Content="Donate" Grid.Row="4"/>
+        <Button x:Name="ExitButton" Content="Exit" Grid.Row="5"/>
+        <DataGrid ItemsSource="{Binding Odds}" Grid.Column="1" Grid.RowSpan="7" x:Name="OddsList" />
     </Grid>
-    
+    <Window.Resources>
+        <Style x:Key="MenuButton" TargetType="Button">
+            <Setter Property="Background" Value="Lime"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
 </Window>
