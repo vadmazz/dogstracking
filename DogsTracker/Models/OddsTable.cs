@@ -25,7 +25,7 @@ namespace DogsTracker.Models
             }
         }       
 
-        private async void ParseOdds()
+        public async void ParseOdds(object parameter)
         {
             //Настраиваем AngleSharp
             var config = Configuration.Default.WithDefaultLoader();
@@ -52,7 +52,7 @@ namespace DogsTracker.Models
                 {
                     OddsChanges.Add("null");
                     continue;
-                }
+                }                
             }
 
             //Заполняем массив Odds объектами TennisOdd и FootballOdd
@@ -81,7 +81,7 @@ namespace DogsTracker.Models
         public OddsTable()
         {
             //Парсим наши ставки в массивы Dates, Matches, OddsChanges
-            ParseOdds();            
+            ParseOdds(new object());            
         }
 
         public void AddOdd(IOdd odd)
