@@ -5,29 +5,42 @@
              xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="DogsTracker.App"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
+
+        <SolidColorBrush x:Key="BG" Color="#2c3e50"/>
+        <SolidColorBrush x:Key="HeaderBG" Color="#34495e"/>
+        <SolidColorBrush x:Key="LabelForeground" Color="#bdc3c7"/>
+        <SolidColorBrush x:Key="ButtonOver" Color="#f39c12"/>
+        <SolidColorBrush x:Key="ButtonPressed" Color="#d35400"/>
+        <SolidColorBrush x:Key="ButtonFocused" Color="#e67e22"/>
+        <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#F3F3F3" Offset="0"/>
+            <GradientStop Color="#EBEBEB" Offset="0.5"/>
+            <GradientStop Color="#DDDDDD" Offset="0.5"/>
+            <GradientStop Color="#CDCDCD" Offset="1"/>
+        </LinearGradientBrush>
+
         <DataTemplate x:Key="ColButton">
             <Button Tag="{Binding}" Content="Predict"/>
         </DataTemplate>
 
-        <Style TargetType="{x:Type Rectangle}" x:Key="BackgroundRect">
-            <Setter Property="Fill" Value="#2c3e50"/>
+        <Style TargetType="Canvas"  x:Key="BackgroundCanvas">
+            <Setter Property="Background" Value="{DynamicResource BG}" />
         </Style>
 
-        <Style TargetType="{x:Type Rectangle}" x:Key="HeaderRect">
-            <Setter Property="Fill" Value="#34495e"/>
+        <Style TargetType="Canvas" x:Key="HeaderCanvas">
+            <Setter Property="Background" Value="{DynamicResource HeaderBG}"/>
+        </Style>
+
+        <Style TargetType="Canvas" x:Key="SettingsBG">
+            <Setter Property="Background" Value="{DynamicResource LabelForeground}"/>
         </Style>
 
         <Style TargetType="{x:Type Label}" x:Key="HeaderLabel">
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Foreground" Value="#bdc3c7"/>
+            <Setter Property="Foreground" Value="{DynamicResource LabelForeground}"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Ponter Alt"/>
-        </Style>
-
-        <Style TargetType="{x:Type Button}" x:Key="SelectedButton">
-            <Setter Property="Background" Value="#f39c12"/>
-            <Setter Property="Foreground" Value="#FFFFFF"/>
         </Style>
 
         <Style x:Key="ButtonFocusVisual">
@@ -39,19 +52,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <LinearGradientBrush x:Key="ButtonNormalBackground" EndPoint="0,1" StartPoint="0,0">
-            <GradientStop Color="#F3F3F3" Offset="0"/>
-            <GradientStop Color="#EBEBEB" Offset="0.5"/>
-            <GradientStop Color="#DDDDDD" Offset="0.5"/>
-            <GradientStop Color="#CDCDCD" Offset="1"/>
-        </LinearGradientBrush>
+        
         <SolidColorBrush x:Key="ButtonNormalBorder" Color="Transparent"/>
         <Style x:Key="MenuButton" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
             <Setter Property="Background" Value="#2c3e50"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>  
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="-4"/>
@@ -64,15 +72,15 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="#f39c12"/>
-                                <Setter Property="Background" TargetName="Bd" Value="#f39c12"/>
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ButtonOver}"/>
                             </Trigger>
                             <Trigger Property="IsKeyboardFocused" Value="True">
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="#e67e22"/>
-                                <Setter Property="Background" TargetName="Bd" Value="#e67e22"/>
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ButtonFocused}"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter Property="BorderBrush" TargetName="Bd" Value="#FF3399FF"/>
-                                <Setter Property="Background" TargetName="Bd" Value="#d35400"/>
+                                <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ButtonPressed}"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
@@ -82,7 +90,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-             
 
     </Application.Resources>
 </Application>

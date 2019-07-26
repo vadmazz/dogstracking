@@ -14,34 +14,41 @@ namespace DogsTracker.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand RefreshCommand { get; private set; }
-        public ICommand ExitCommand { get; set; }
-        OddsTable oddsTable;
+
+        public ICommand ExitCommand { get; private set; }
+
+        public ICommand SettingsCommand { get; private set; }
+
+        public OddsTable oddsTable;
+
+        WindowManager windowManager;
+
         public ObservableCollection<IOdd> Odds => oddsTable.Odds;
 
+        public Visibility SettingsVisibility => windowManager.SettingsVisibility;
 
         public MainWindowViewModel()
         {
             oddsTable = new OddsTable();
+            windowManager = new WindowManager();                   
             RefreshCommand = new RelayCommand(Refresh);
-            ExitCommand = new RelayCommand(Close);
+            ExitCommand = new RelayCommand(windowManager.Close);
+            SettingsCommand = new RelayCommand(windowManager.SettingsShow);
+
             oddsTable.PropertyChanged += (s, e) => { OnPropertyChanged(e.PropertyName); };
+            windowManager.PropertyChanged += (s, e) => { OnPropertyChanged(e.PropertyName); };
         }
+
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-        //вынести в модель
-        public void Refresh(object parametr)
+
+        public void Refresh(object parameter)
         {
             oddsTable = new OddsTable();
-            oddsTable.ParseOdds(new object());
             OnPropertyChanged("Odds");
-        }
-
-        public void Close(object parametr)
-        {
-            Application.Current.MainWindow.Close();
         }
     }
 }

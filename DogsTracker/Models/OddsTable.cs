@@ -16,7 +16,7 @@ namespace DogsTracker.Models
         private List<AngleSharp.Dom.IElement> Matches = new List<AngleSharp.Dom.IElement>();
         private List<string> OddsChanges;
 
-        private readonly ObservableCollection<IOdd> odds = new ObservableCollection<IOdd>();
+        private ObservableCollection<IOdd> odds = new ObservableCollection<IOdd>();
         public ObservableCollection<IOdd> Odds
         {
             get
@@ -81,7 +81,7 @@ namespace DogsTracker.Models
         public OddsTable()
         {
             //Парсим наши ставки в массивы Dates, Matches, OddsChanges
-            ParseOdds(new object());            
+            ParseOdds(null);            
         }
 
         public void AddOdd(IOdd odd)
