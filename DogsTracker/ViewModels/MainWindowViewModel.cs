@@ -13,11 +13,15 @@ namespace DogsTracker.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public string HelpText => windowManager.HelpText; //текст, отображающийся в окне помощи
+
         public ICommand RefreshCommand { get; private set; }
 
         public ICommand ExitCommand { get; private set; }
 
-        public ICommand SettingsCommand { get; private set; }
+        public ICommand SettingsShowCommand { get; private set; }
+
+        public ICommand HelpShowCommand { get; private set; }
 
         public OddsTable oddsTable;
 
@@ -25,7 +29,11 @@ namespace DogsTracker.ViewModels
 
         public ObservableCollection<IOdd> Odds => oddsTable.Odds;
 
+        public Visibility OddsVisibility => windowManager.OddsVisibility;
+
         public Visibility SettingsVisibility => windowManager.SettingsVisibility;
+
+        public Visibility HelpVisibility => windowManager.HelpVisibility;       
 
         public bool IsDarkModeEnabled
         {
@@ -39,7 +47,8 @@ namespace DogsTracker.ViewModels
             windowManager = new WindowManager();
             RefreshCommand = new RelayCommand(Refresh);
             ExitCommand = new RelayCommand(windowManager.Close);
-            SettingsCommand = new RelayCommand(windowManager.SettingsShow);
+            SettingsShowCommand = new RelayCommand(windowManager.ShowSettingsWindow);
+            HelpShowCommand = new RelayCommand(windowManager.ShowHelpWindow);
 
             oddsTable.PropertyChanged += (s, e) => { OnPropertyChanged(e.PropertyName); };
             windowManager.PropertyChanged += (s, e) => { OnPropertyChanged(e.PropertyName); };
@@ -54,6 +63,7 @@ namespace DogsTracker.ViewModels
         public void Refresh(object parameter)
         {
             oddsTable = new OddsTable();
+            windowManager.ShowOddsWindow(null);
             OnPropertyChanged("Odds");
         }
     }

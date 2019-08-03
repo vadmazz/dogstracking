@@ -3,7 +3,7 @@ using System.Windows.Media;
 
 namespace DogsTracker.Models
 {
-    public class Theme
+    public static class Theme
     {
         //------[DarkThemeColors]-----------
         static readonly SolidColorBrush DarkBlueBG = new SolidColorBrush(Color.FromRgb(44, 62, 80));
@@ -12,7 +12,7 @@ namespace DogsTracker.Models
 
         static readonly SolidColorBrush DarkLabelForeground = new SolidColorBrush(Color.FromRgb(189, 195, 199));
 
-        static readonly SolidColorBrush DarkSettingsLabelForeground = new SolidColorBrush(Color.FromRgb(236, 240, 241));
+        static readonly SolidColorBrush DarkContentLabelForeground = new SolidColorBrush(Color.FromRgb(236, 240, 241));
         //----------------------------------
         //------[LightThemeColors]----------
         static readonly SolidColorBrush LightBlueBG = new SolidColorBrush(Color.FromRgb(52, 152, 219));
@@ -21,7 +21,7 @@ namespace DogsTracker.Models
 
         static readonly SolidColorBrush LightLabelForeground = new SolidColorBrush(Color.FromRgb(236, 240, 241));
 
-        static readonly SolidColorBrush LightSettingsLabelForeground = new SolidColorBrush(Color.FromRgb(52, 73, 94));
+        static readonly SolidColorBrush LightContentLabelForeground = new SolidColorBrush(Color.FromRgb(52, 73, 94));
         //----------------------------------
 
         public static void SetDarkTheme()
@@ -29,7 +29,7 @@ namespace DogsTracker.Models
             Application.Current.Resources["BG"] = DarkBlueBG;
             Application.Current.Resources["HeaderBG"] = DarkHeaderBG;
             Application.Current.Resources["LabelForeground"] = DarkLabelForeground;
-            Application.Current.Resources["SettingsLabelForeground"] = DarkSettingsLabelForeground;
+            Application.Current.Resources["ContentLabelForeground"] = DarkContentLabelForeground;
         }
 
         public static void SetLightTheme()
@@ -37,7 +37,7 @@ namespace DogsTracker.Models
             Application.Current.Resources["BG"] = LightBlueBG;
             Application.Current.Resources["HeaderBG"] = LightHeaderBG;
             Application.Current.Resources["LabelForeground"] = LightLabelForeground;
-            Application.Current.Resources["SettingsLabelForeground"] = LightSettingsLabelForeground;
+            Application.Current.Resources["ContentLabelForeground"] = LightContentLabelForeground;
         }
             
 

@@ -9,7 +9,7 @@
         <SolidColorBrush x:Key="BG" Color="#2c3e50"/>
         <SolidColorBrush x:Key="HeaderBG" Color="#34495e"/>
         <SolidColorBrush x:Key="LabelForeground" Color="#bdc3c7"/>
-        <SolidColorBrush x:Key="SettingsLabelForeground" Color="#ecf0f1"/>
+        <SolidColorBrush x:Key="ContentLabelForeground" Color="#ecf0f1"/>
         <SolidColorBrush x:Key="ButtonOver" Color="#f39c12"/>
         <SolidColorBrush x:Key="ButtonPressed" Color="#d35400"/>
         <SolidColorBrush x:Key="ButtonFocused" Color="#e67e22"/>
