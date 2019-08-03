@@ -16,7 +16,7 @@ namespace DogsTracker.Models
         private List<AngleSharp.Dom.IElement> Matches = new List<AngleSharp.Dom.IElement>();
         private List<string> OddsChanges;
 
-        private readonly ObservableCollection<IOdd> odds = new ObservableCollection<IOdd>();
+        private ObservableCollection<IOdd> odds = new ObservableCollection<IOdd>();
         public ObservableCollection<IOdd> Odds
         {
             get
@@ -25,7 +25,7 @@ namespace DogsTracker.Models
             }
         }       
 
-        private async void ParseOdds()
+        public async void ParseOdds(object parameter)
         {
             //Настраиваем AngleSharp
             var config = Configuration.Default.WithDefaultLoader();
@@ -52,7 +52,7 @@ namespace DogsTracker.Models
                 {
                     OddsChanges.Add("null");
                     continue;
-                }
+                }                
             }
 
             //Заполняем массив Odds объектами TennisOdd и FootballOdd
@@ -81,7 +81,7 @@ namespace DogsTracker.Models
         public OddsTable()
         {
             //Парсим наши ставки в массивы Dates, Matches, OddsChanges
-            ParseOdds();            
+            ParseOdds(null);            
         }
 
         public void AddOdd(IOdd odd)

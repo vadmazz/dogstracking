@@ -15,8 +15,6 @@ namespace DogsTracker.Interfaces
         string DrawChange { get; set; }
 
         string SecondWinChange { get; set; }
-
-        IPrediction Prediction { get; set; }
         
     }
 }
