@@ -1,10 +1,13 @@
 ﻿using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Media;
+
 namespace DogsTracker.Models
 {
     class WindowManager : INotifyPropertyChanged
-    {
+    {       
         private Visibility settingsVisiblity = Visibility.Hidden;
         public Visibility SettingsVisibility {
             get { return settingsVisiblity; }
@@ -12,6 +15,21 @@ namespace DogsTracker.Models
             {
                 settingsVisiblity = value;
                 OnPropertyChanged("SettingsVisibility");
+            }
+        }
+
+        private bool isDarkModeEnabled = true;
+        public bool IsDarkModeEnabled
+        {
+            get { return isDarkModeEnabled; }
+            set
+            {
+                isDarkModeEnabled = value;
+                if (value)
+                    Theme.SetDarkTheme();
+                else
+                    Theme.SetLightTheme();
+                OnPropertyChanged("IsDarkModeEnabled");
             }
         }
 
@@ -26,6 +44,14 @@ namespace DogsTracker.Models
                 SettingsVisibility = Visibility.Visible;
         }
 
+        public void SetColorScheme(object parameter)
+        {
+            if (isDarkModeEnabled)
+                isDarkModeEnabled = false;
+            else
+                isDarkModeEnabled = true;
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName]string prop = "")

@@ -9,6 +9,7 @@
         <SolidColorBrush x:Key="BG" Color="#2c3e50"/>
         <SolidColorBrush x:Key="HeaderBG" Color="#34495e"/>
         <SolidColorBrush x:Key="LabelForeground" Color="#bdc3c7"/>
+        <SolidColorBrush x:Key="SettingsLabelForeground" Color="#ecf0f1"/>
         <SolidColorBrush x:Key="ButtonOver" Color="#f39c12"/>
         <SolidColorBrush x:Key="ButtonPressed" Color="#d35400"/>
         <SolidColorBrush x:Key="ButtonFocused" Color="#e67e22"/>
@@ -56,7 +57,7 @@
         <SolidColorBrush x:Key="ButtonNormalBorder" Color="Transparent"/>
         <Style x:Key="MenuButton" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
-            <Setter Property="Background" Value="#2c3e50"/>
+            <Setter Property="Background" Value="{DynamicResource BG}"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
